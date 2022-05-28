@@ -1,0 +1,38 @@
+body {
+  width: 800px;
+}
+
+h1 {
+  font-size: 30px;
+}
+h2 {
+  color: lightgrey;
+  font-size: 20px;
+}
+span {
+  color: lightgrey;
+  font-size: 30px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 25px;
+}
+.weather-now {
+  position: absolute;
+  top: 10px;
+  right: 600px;
+  font-size: 40px;
+}
+.card-title {
+  text-align: center;
+}
+.card-text {
+  text-align: center;
+}
+.city {
+  width: 280px;
+  margin-right: 40px;
+  border-style: solid;
+  font-size: 20px;
+}
