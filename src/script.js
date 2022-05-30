@@ -73,16 +73,20 @@ entercitybutton.addEventListener('submit', cityTemperature)
 
 //change Fahrenheit Celsius
 
-function changeTemp() {
-  let strong = document.querySelector('strong')
-  strong.innerHTML = 66
+function changeTemp(event) {
+  event.preventDefault()
+  let temperatureElement = document.querySelector('strong')
+  let temperature = temperatureElement.innerHTML
+  temperatureElement.innerHTML = Math.round(temperature * 1.8 + 32)
 }
 let fahrenheit = document.querySelector('#fahrenheit-link')
 fahrenheit.addEventListener('click', changeTemp)
 
-function changeBack() {
-  let strong = document.querySelector('strong')
-  strong.innerHTML = 19
+function changeBack(event) {
+  event.preventDefault()
+  let temperatureElement = document.querySelector('strong')
+  let temperature = temperatureElement.innerHTML
+  temperatureElement.innerHTML = Math.round(((temperature - 32) * 5) / 9)
 }
 
 let celsius = document.querySelector('#celsius-link')
