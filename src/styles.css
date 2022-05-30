@@ -36,3 +36,11 @@ a {
   border-style: solid;
   font-size: 20px;
 }
+
+.footer {
+  margin-top: 10px;
+}
+
+.github {
+  font-size: 15px;
+}
