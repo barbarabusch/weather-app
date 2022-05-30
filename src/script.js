@@ -52,6 +52,7 @@ let entercitybutton = document.querySelector('#city-input')
 entercitybutton.addEventListener('submit', handleCity)
 
 function showTemperature(response) {
+  document.querySelector('h1').innerHTML = response.data.name
   let temperature = Math.round(response.data.main.temp)
   let strong = document.querySelector('#temperature')
   strong.innerHTML = `${temperature}`
@@ -91,3 +92,20 @@ function changeBack(event) {
 
 let celsius = document.querySelector('#celsius-link')
 celsius.addEventListener('click', changeBack)
+
+//Current location
+function showPosition(position) {
+  let lat = position.coords.latitude
+  let lon = position.coords.longitude
+  let apiKey = '8a55dc67b7be1b3bb161f3d1b6563536'
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
+  axios.get(apiUrl).then(showTemperature)
+}
+
+function getPosition(event) {
+  event.preventDefault()
+  navigator.geolocation.getCurrentPosition(showPosition)
+}
+
+let currentLocationButton = document.querySelector('button')
+currentLocationButton.addEventListener('click', getPosition)
