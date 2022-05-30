@@ -1,3 +1,4 @@
+// date & time
 function todaysDate() {
   let now = new Date()
   let date = now.getDate()
@@ -38,8 +39,8 @@ function todaysDate() {
 
 let h2 = document.querySelector('h2')
 h2.innerHTML = todaysDate()
-//I know the homework did not ask for month and year
-// but I didn't want to deviate too much from the design of my weather app
+
+//search function
 
 function handleCity(event) {
   event.preventDefault()
@@ -50,7 +51,27 @@ function handleCity(event) {
 let entercitybutton = document.querySelector('#city-input')
 entercitybutton.addEventListener('submit', handleCity)
 
-//bonus
+function showTemperature(response) {
+  let temperature = Math.round(response.data.main.temp)
+  let strong = document.querySelector('#temperature')
+  strong.innerHTML = `${temperature}`
+  let condition = response.data.weather[0].main
+  let span = document.querySelector('span')
+  span.innerHTML = `${condition}`
+}
+
+function cityTemperature(event) {
+  event.preventDefault()
+  let input = document.querySelector('#city')
+  let city = input.value
+  let apiKey = '8a55dc67b7be1b3bb161f3d1b6563536'
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
+  axios.get(apiUrl).then(showTemperature)
+}
+
+entercitybutton.addEventListener('submit', cityTemperature)
+
+//change Fahrenheit Celsius
 
 function changeTemp() {
   let strong = document.querySelector('strong')
