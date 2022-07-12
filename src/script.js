@@ -57,7 +57,7 @@ function showTemperature(response) {
   let strong = document.querySelector('#temperature')
   strong.innerHTML = `${temperature}`
   let condition = response.data.weather[0].main
-  let span = document.querySelector('span')
+  let span = document.querySelector('#condition')
   span.innerHTML = `${condition}`
 }
 
