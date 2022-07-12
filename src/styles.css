@@ -1,28 +1,38 @@
 body {
-  width: 800px;
+  font-family: Arial, Helvetica, sans-serif;
 }
-
 h1 {
   font-size: 30px;
 }
 h2 {
-  color: lightgrey;
+  color: rgb(148, 146, 146);
   font-size: 20px;
 }
 span {
-  color: lightgrey;
-  font-size: 30px;
+  color: rgb(148, 146, 146);
+  font-size: 25px;
 }
-
 a {
   text-decoration: none;
   font-size: 25px;
 }
-.weather-now {
-  position: absolute;
-  top: 10px;
-  right: 600px;
-  font-size: 40px;
+
+.container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 30px;
+  border: 2px solid #dadde1;
+}
+.temperature {
+  font-size: 35px;
+}
+.temperature-conditions {
+  float: right;
+}
+.temperature-conditions .units {
+  position: relative;
+  font-size: 15px;
+  top: -13px;
 }
 .card-title {
   text-align: center;
@@ -36,11 +46,10 @@ a {
   border-style: solid;
   font-size: 20px;
 }
-
 .footer {
-  margin-top: 10px;
+  margin-top: 20px;
+  font-size: 15px;
 }
-
 .github {
   font-size: 15px;
 }
