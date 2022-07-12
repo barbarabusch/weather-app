@@ -6,6 +6,14 @@ function todaysDate() {
   let hour = now.getHours()
   let min = now.getMinutes()
 
+  if (hour < 10) {
+    let hour = `0${hour}`
+  }
+
+  if (min < 10) {
+    let min = `0${min}`
+  }
+
   let days = [
     'Sunday',
     'Monday',
