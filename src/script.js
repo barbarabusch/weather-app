@@ -1,19 +1,15 @@
 // date & time
-function todaysDate() {
-  let now = new Date()
-  let date = now.getDate()
-  let year = now.getFullYear()
-  let hour = now.getHours()
-  let min = now.getMinutes()
+function formatDate(timestamp) {
+  let date = new Date(timestamp)
 
-  if (hour < 10) {
-    let hour = `0${hour}`
+  let hours = date.getHours()
+  if (hours < 10) {
+    let hours = `0${hours}`
   }
-
+  let min = date.getMinutes()
   if (min < 10) {
     let min = `0${min}`
   }
-
   let days = [
     'Sunday',
     'Monday',
@@ -23,7 +19,9 @@ function todaysDate() {
     'Friday',
     'Saturday',
   ]
-  let day = days[now.getDay()]
+  let day = days[date.getDay()]
+
+  let today = date.getDate()
 
   let months = [
     'January',
@@ -39,14 +37,11 @@ function todaysDate() {
     'November',
     'December',
   ]
-  let month = months[now.getMonth()]
+  let month = months[date.getMonth()]
 
-  let today = `${day} ${date}th ${month} ${year}    ${hour}:${min}`
-  return today
+  let year = date.getFullYear()
+  return `${day} ${today}th ${month} ${year}   ${hours}:${min}`
 }
-
-let h2 = document.querySelector('h2')
-h2.innerHTML = todaysDate()
 
 //search function
 
@@ -60,8 +55,10 @@ let entercitybutton = document.querySelector('#city-input')
 entercitybutton.addEventListener('submit', handleCity)
 
 function showTemperature(response) {
-  console.log(response.data)
   document.querySelector('h1').innerHTML = response.data.name
+
+  let dateElement = document.querySelector('#date')
+  dateElement.innerHTML = formatDate(response.data.dt * 1000)
 
   let strongElement = document.querySelector('#temperature')
   strongElement.innerHTML = Math.round(response.data.main.temp)
