@@ -8,6 +8,18 @@ h2 {
   color: rgb(148, 146, 146);
   font-size: 20px;
 }
+
+ul {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+li {
+  color: rgb(148, 146, 146);
+  font-size: 18px;
+  display: inline;
+}
 span {
   color: rgb(148, 146, 146);
   font-size: 25px;
