@@ -60,13 +60,23 @@ let entercitybutton = document.querySelector('#city-input')
 entercitybutton.addEventListener('submit', handleCity)
 
 function showTemperature(response) {
+  console.log(response.data)
   document.querySelector('h1').innerHTML = response.data.name
-  let temperature = Math.round(response.data.main.temp)
-  let strong = document.querySelector('#temperature')
-  strong.innerHTML = `${temperature}`
-  let condition = response.data.weather[0].main
-  let span = document.querySelector('#condition')
-  span.innerHTML = `${condition}`
+
+  let strongElement = document.querySelector('#temperature')
+  strongElement.innerHTML = Math.round(response.data.main.temp)
+
+  let spanElement = document.querySelector('#condition')
+  spanElement.innerHTML = response.data.weather[0].description
+
+  let pressureElement = document.querySelector('#pressure')
+  pressureElement.innerHTML = response.data.main.pressure
+
+  let windElement = document.querySelector('#windspeed')
+  windElement.innerHTML = response.data.wind.speed
+
+  let humidityElement = document.querySelector('#humidity')
+  humidityElement.innerHTML = response.data.main.humidity
 }
 
 function cityTemperature(event) {

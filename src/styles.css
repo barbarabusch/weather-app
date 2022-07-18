@@ -20,10 +20,7 @@ li {
   font-size: 18px;
   display: inline;
 }
-span {
-  color: rgb(148, 146, 146);
-  font-size: 25px;
-}
+
 a {
   text-decoration: none;
   font-size: 25px;
@@ -45,6 +42,11 @@ a {
   position: relative;
   font-size: 15px;
   top: -13px;
+}
+.condition {
+  text-transform: capitalize;
+  color: rgb(148, 146, 146);
+  font-size: 25px;
 }
 .card-title {
   text-align: center;
