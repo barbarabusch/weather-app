@@ -100,19 +100,24 @@ entercitybutton.addEventListener('submit', cityTemperature)
 function changeTemp(event) {
   event.preventDefault()
   let temperatureElement = document.querySelector('strong')
+  celsius.classList.remove('active')
+  fahrenheit.classList.add('active')
   let temperature = temperatureElement.innerHTML
   temperatureElement.innerHTML = Math.round(celsiusTemperature * 1.8 + 32)
 }
-let fahrenheit = document.querySelector('#fahrenheit-link')
-fahrenheit.addEventListener('click', changeTemp)
 
 function changeBack(event) {
   event.preventDefault()
   let temperatureElement = document.querySelector('strong')
+  celsius.classList.add('active')
+  fahrenheit.classList.remove('active')
   temperatureElement.innerHTML = Math.round(celsiusTemperature)
 }
 
 let celsiusTemperature = null
+
+let fahrenheit = document.querySelector('#fahrenheit-link')
+fahrenheit.addEventListener('click', changeTemp)
 
 let celsius = document.querySelector('#celsius-link')
 celsius.addEventListener('click', changeBack)

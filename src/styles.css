@@ -23,7 +23,9 @@ li {
 
 a {
   text-decoration: none;
-  font-size: 25px;
+  font-size: 15px;
+  position: relative;
+  top: -13px;
 }
 
 .container {
@@ -40,8 +42,17 @@ a {
 }
 .temperature-conditions .units {
   position: relative;
-  font-size: 15px;
+  color: black;
+  cursor: default;
   top: -13px;
+}
+
+.temperature-conditions .active {
+  color: black;
+  cursor: default;
+}
+.temperature-conditions .active:hover {
+  text-decoration: none;
 }
 .condition {
   text-transform: capitalize;
