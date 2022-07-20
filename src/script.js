@@ -67,7 +67,7 @@ function showTemperature(response) {
   let icon = response.data.weather[0].icon
   iconElement.setAttribute(
     'src',
-    'http://openweathermap.org/img/wn/${icon}@2x.png',
+    `http://openweathermap.org/img/wn/${icon}@2x.png`,
   )
 
   let spanElement = document.querySelector('#condition')
