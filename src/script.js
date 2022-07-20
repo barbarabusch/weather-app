@@ -60,8 +60,9 @@ function showTemperature(response) {
   let dateElement = document.querySelector('#date')
   dateElement.innerHTML = formatDate(response.data.dt * 1000)
 
+  celsiusTemperature = response.data.main.temp
   let strongElement = document.querySelector('#temperature')
-  strongElement.innerHTML = Math.round(response.data.main.temp)
+  strongElement.innerHTML = Math.round(celsiusTemperature)
 
   let iconElement = document.querySelector('#icon')
   let icon = response.data.weather[0].icon
@@ -100,7 +101,7 @@ function changeTemp(event) {
   event.preventDefault()
   let temperatureElement = document.querySelector('strong')
   let temperature = temperatureElement.innerHTML
-  temperatureElement.innerHTML = Math.round(temperature * 1.8 + 32)
+  temperatureElement.innerHTML = Math.round(celsiusTemperature * 1.8 + 32)
 }
 let fahrenheit = document.querySelector('#fahrenheit-link')
 fahrenheit.addEventListener('click', changeTemp)
@@ -108,9 +109,10 @@ fahrenheit.addEventListener('click', changeTemp)
 function changeBack(event) {
   event.preventDefault()
   let temperatureElement = document.querySelector('strong')
-  let temperature = temperatureElement.innerHTML
-  temperatureElement.innerHTML = Math.round(((temperature - 32) * 5) / 9)
+  temperatureElement.innerHTML = Math.round(celsiusTemperature)
 }
+
+let celsiusTemperature = null
 
 let celsius = document.querySelector('#celsius-link')
 celsius.addEventListener('click', changeBack)
