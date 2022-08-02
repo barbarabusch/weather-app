@@ -60,12 +60,10 @@ a {
   font-size: 25px;
 }
 
-.card-title {
+.forecast {
   text-align: center;
 }
-.card-text {
-  text-align: center;
-}
+
 .city {
   width: 280px;
   margin-right: 40px;
