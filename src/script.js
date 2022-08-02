@@ -43,6 +43,28 @@ function formatDate(timestamp) {
   return `${day} ${today}th ${month} ${year}   ${hours}:${min}`
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector('#forecast')
+  let forecastHTML = `<div class="row">`
+  forecastHTML =
+    forecastHTML +
+    `<div class="col-2">
+            <h5 class="forecast-date">Today</h5>
+            <img
+              src="images/partly_cloudy.png"
+              class="forecast-image"
+              alt="partly cloudy"
+              width="85"
+            />
+              <p class="forecast-temperature">
+                <strong>19°</strong>
+                4°
+              </p>
+          </div>`
+  forecastHTML = forecastHTML + `</div>`
+  forecastElement.innerHTL = forecastHTML
+}
+
 //search function
 
 function handleCity(event) {
@@ -138,3 +160,5 @@ function getPosition(event) {
 
 let currentLocationButton = document.querySelector('button')
 currentLocationButton.addEventListener('click', getPosition)
+
+displayForecast()
