@@ -46,10 +46,12 @@ function formatDate(timestamp) {
 function displayForecast() {
   let forecastElement = document.querySelector('#forecast')
   let forecastHTML = `<div class="row">`
-  forecastHTML =
-    forecastHTML +
-    `<div class="col-2">
-            <h5 class="forecast-date">Today</h5>
+  let days = ['Wed', 'Thu', 'Fri', 'Sat']
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+            <h5 class="forecast-date">${day}</h5>
             <img
               src="images/partly_cloudy.png"
               class="forecast-image"
@@ -61,8 +63,10 @@ function displayForecast() {
                 4°
               </p>
           </div>`
+  })
+
   forecastHTML = forecastHTML + `</div>`
-  forecastElement.innerHTL = forecastHTML
+  forecastElement.innerHTML = forecastHTML
 }
 
 //search function
