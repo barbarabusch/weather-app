@@ -43,7 +43,8 @@ function formatDate(timestamp) {
   return `${day} ${today}th ${month} ${year}   ${hours}:${min}`
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily)
   let forecastElement = document.querySelector('#forecast')
   let forecastHTML = `<div class="row">`
   let days = ['Wed', 'Thu', 'Fri', 'Sat']
@@ -80,6 +81,14 @@ function handleCity(event) {
 let entercitybutton = document.querySelector('#city-input')
 entercitybutton.addEventListener('submit', handleCity)
 
+function getForecast(coordinates) {
+  console.log(coordinates)
+  let apiKey = '8a55dc67b7be1b3bb161f3d1b6563536'
+  let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`
+  console.log(apiUrl)
+  axios.get(apiUrl).then(displayForecast)
+}
+
 function showTemperature(response) {
   document.querySelector('h1').innerHTML = response.data.name
 
@@ -108,6 +117,8 @@ function showTemperature(response) {
 
   let humidityElement = document.querySelector('#humidity')
   humidityElement.innerHTML = response.data.main.humidity
+
+  getForecast(response.data.coord)
 }
 
 function cityTemperature(event) {
@@ -164,5 +175,3 @@ function getPosition(event) {
 
 let currentLocationButton = document.querySelector('button')
 currentLocationButton.addEventListener('click', getPosition)
-
-displayForecast()
