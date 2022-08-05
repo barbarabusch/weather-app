@@ -43,27 +43,44 @@ function formatDate(timestamp) {
   return `${day} ${today}th ${month} ${year}   ${hours}:${min}`
 }
 
+function formatForecast(timestamp) {
+  let date = new Date(timestamp * 1000)
+  let day = date.getDay()
+  let days = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+  ]
+  return days[day]
+}
 function displayForecast(response) {
-  console.log(response.data.daily)
+  let forecast = response.data.daily
   let forecastElement = document.querySelector('#forecast')
   let forecastHTML = `<div class="row">`
-  let days = ['Wed', 'Thu', 'Fri', 'Sat']
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-2">
-            <h5 class="forecast-date">${day}</h5>
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2">
+            <h5 class="forecast-date">${formatForecast(forecastDay.dt)}</h5>
             <img
-              src="images/partly_cloudy.png"
+              src="http://openweathermap.org/img/wn/${
+                forecastDay.weather[0].icon
+              }@2x.png"
               class="forecast-image"
-              alt="partly cloudy"
+              alt=""
               width="85"
             />
               <p class="forecast-temperature">
-                <strong>19°</strong>
-                4°
+                <strong>${Math.round(forecastDay.temp.max)}°</strong>
+                ${Math.round(forecastDay.temp.min)}°
               </p>
           </div>`
+    }
   })
 
   forecastHTML = forecastHTML + `</div>`
@@ -84,7 +101,7 @@ entercitybutton.addEventListener('submit', handleCity)
 function getForecast(coordinates) {
   console.log(coordinates)
   let apiKey = '8a55dc67b7be1b3bb161f3d1b6563536'
-  let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`
   console.log(apiUrl)
   axios.get(apiUrl).then(displayForecast)
 }
